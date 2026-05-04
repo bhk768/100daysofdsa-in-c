@@ -21,14 +21,14 @@ At each level, the rightmost node is visible from the right view*/
 #include <stdio.h>
 #include <stdlib.h>
 
-// Definition of TreeNode
+
 struct TreeNode {
     int val;
     struct TreeNode *left;
     struct TreeNode *right;
 };
 
-// Function to create new node
+
 struct TreeNode* createNode(int val) {
     struct TreeNode* node = (struct TreeNode*)malloc(sizeof(struct TreeNode));
     node->val = val;
@@ -36,7 +36,6 @@ struct TreeNode* createNode(int val) {
     return node;
 }
 
-// Build tree from level order input
 struct TreeNode* buildTree(int arr[], int n) {
     if (n == 0 || arr[0] == -1) return NULL;
 
@@ -50,14 +49,14 @@ struct TreeNode* buildTree(int arr[], int n) {
     while (i < n) {
         struct TreeNode* current = queue[front++];
 
-        // Left child
+        
         if (i < n && arr[i] != -1) {
             current->left = createNode(arr[i]);
             queue[rear++] = current->left;
         }
         i++;
 
-        // Right child
+        
         if (i < n && arr[i] != -1) {
             current->right = createNode(arr[i]);
             queue[rear++] = current->right;
@@ -69,7 +68,7 @@ struct TreeNode* buildTree(int arr[], int n) {
     return root;
 }
 
-// Function to print right view
+
 void rightView(struct TreeNode* root) {
     if (!root) return;
 
@@ -84,7 +83,7 @@ void rightView(struct TreeNode* root) {
         for (int i = 0; i < size; i++) {
             struct TreeNode* node = queue[front++];
 
-            // Print last node of this level
+         
             if (i == size - 1) {
                 printf("%d ", node->val);
             }
